@@ -1,0 +1,59 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!-- Striped rows start -->
+<section class="section">
+    <div class="row " id="table-striped">
+        <div class="col-12">
+            <div class="card">
+                <!-- table striped -->
+                <h2 class="text-center mt-5 mb-5">Category</h2>
+                <div class="table-responsive">
+                    @if (Model.IsMain)
+                    {
+                        <table class="table table-striped mb-0 ">
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-bold-500">@Model.Name</td>
+                                    <td class="text-bold-500"><img style="width:200px;height:250px" src="~/assets/images/@Model.Image" /></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2> Children of @Model.Name</h2>
+                        <ul>
+                            @foreach (var child in ViewBag.ChildCategories)
+                            {
+                                <li>@child.Name</li>
+                            }
+                        </ul>
+                    }
+                    else{
+                    <table class="table table-striped mb-0 ">
+                        <thead>
+                            <tr>
+                                <th><h2>NAME</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-bold-500"><h3>@Model.Name</h3></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Striped rows end -->
